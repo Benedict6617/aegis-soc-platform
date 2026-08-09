@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Ransomware Containment & Recovery",
+    "triggerCategory": "ransomware",
+    "description": "Isolates affected hosts, disables lateral movement paths, and notifies leadership within SLA for suspected ransomware activity.",
+    "autoExecute": true,
+    "steps": [
+      { "type": "quarantine_asset", "description": "Isolate the affected host from the network to prevent lateral spread." },
+      { "type": "notify", "description": "Page the on-call SOC manager and IT leadership via SMS and email." },
+      { "type": "require_manual_action", "description": "Validate and restore from the most recent clean backup snapshot." },
+      { "type": "require_manual_action", "description": "Rotate credentials for all accounts active on the affected host in the last 72 hours." },
+      { "type": "require_manual_action", "description": "Submit findings to legal/compliance for breach notification assessment." }
+    ]
+  },
+  {
+    "name": "Phishing Response",
+    "triggerCategory": "phishing",
+    "description": "Standard workflow for confirmed phishing emails: contain, notify, and remediate affected mailboxes.",
+    "autoExecute": true,
+    "steps": [
+      { "type": "notify", "description": "Alert the affected user's manager and IT security awareness team." },
+      { "type": "require_manual_action", "description": "Purge the malicious email from all recipient mailboxes." },
+      { "type": "require_manual_action", "description": "Block sender domain and indicators at the email gateway." },
+      { "type": "require_manual_action", "description": "Force password reset if credentials may have been entered on a phishing page." }
+    ]
+  },
+  {
+    "name": "Malware Eradication",
+    "triggerCategory": "malware",
+    "description": "Contains malware detections from EDR/AV, isolates the host, and coordinates eradication and re-imaging if required.",
+    "autoExecute": true,
+    "steps": [
+      { "type": "quarantine_asset", "description": "Isolate the infected endpoint or server from the network." },
+      { "type": "notify", "description": "Notify the assigned Tier 2 analyst for deep-dive triage." },
+      { "type": "require_manual_action", "description": "Run full EDR remediation scan and collect forensic artifacts." },
+      { "type": "require_manual_action", "description": "Re-image the host if eradication cannot be confirmed within 4 hours." }
+    ]
+  },
+  {
+    "name": "Unauthorized Access Response",
+    "triggerCategory": "unauthorized_access",
+    "description": "Responds to suspicious authentication activity, brute force attempts, or privilege escalation.",
+    "autoExecute": false,
+    "steps": [
+      { "type": "notify", "description": "Notify identity/access management team of suspicious authentication pattern." },
+      { "type": "require_manual_action", "description": "Force MFA re-enrollment and password reset for the affected account." },
+      { "type": "require_manual_action", "description": "Review access logs for lateral movement or privilege escalation." },
+      { "type": "require_manual_action", "description": "Disable the account temporarily if compromise is confirmed." }
+    ]
+  },
+  {
+    "name": "Data Exfiltration Response",
+    "triggerCategory": "data_exfiltration",
+    "description": "Addresses suspected unauthorized data transfer out of the network, prioritizing containment and impact assessment.",
+    "autoExecute": true,
+    "steps": [
+      { "type": "quarantine_asset", "description": "Isolate the source host to halt any further outbound transfer." },
+      { "type": "notify", "description": "Escalate immediately to the SOC manager and Data Protection Officer." },
+      { "type": "require_manual_action", "description": "Identify data classification and volume of records potentially exposed." },
+      { "type": "require_manual_action", "description": "Block destination IP/domain at the firewall and proxy layer." },
+      { "type": "require_manual_action", "description": "Prepare regulatory breach notification assessment (GDPR/state law as applicable)." }
+    ]
+  },
+  {
+    "name": "DDoS Mitigation",
+    "triggerCategory": "ddos",
+    "description": "Coordinates traffic scrubbing and upstream provider engagement during volumetric or application-layer DDoS activity.",
+    "autoExecute": false,
+    "steps": [
+      { "type": "notify", "description": "Notify network operations and upstream ISP/CDN provider." },
+      { "type": "require_manual_action", "description": "Enable DDoS scrubbing / rate-limiting rules on the edge firewall and CDN." },
+      { "type": "require_manual_action", "description": "Monitor service availability and customer impact until traffic normalizes." }
+    ]
+  },
+  {
+    "name": "Insider Threat Investigation",
+    "triggerCategory": "insider_threat",
+    "description": "Discreet, HR-coordinated workflow for suspected insider threat activity requiring careful evidentiary handling.",
+    "autoExecute": false,
+    "steps": [
+      { "type": "notify", "description": "Notify HR business partner and Legal before taking further action." },
+      { "type": "require_manual_action", "description": "Preserve forensic evidence without alerting the subject of investigation." },
+      { "type": "require_manual_action", "description": "Review data access and exfiltration history for the associated account." }
+    ]
+  },
+  {
+    "name": "Cloud Misconfiguration Remediation",
+    "triggerCategory": "misconfiguration",
+    "description": "Addresses insecure cloud resource configurations identified by posture management tooling.",
+    "autoExecute": false,
+    "steps": [
+      { "type": "notify", "description": "Notify the cloud platform team owning the affected resource." },
+      { "type": "require_manual_action", "description": "Apply least-privilege policy correction and restrict public exposure." },
+      { "type": "require_manual_action", "description": "Verify no unauthorized access occurred while misconfigured." }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "fullName": "Dana Whitfield",
+    "email": "dana.whitfield@nimbusretail.com",
+    "role": "admin",
+    "phoneNumber": "+15551230101",
+    "password": "AegisAdmin!2024",
+    "mfaEnabled": true
+  },
+  {
+    "fullName": "Marcus Ibe",
+    "email": "marcus.ibe@nimbusretail.com",
+    "role": "soc_manager",
+    "phoneNumber": "+15551230102",
+    "password": "AegisManager!2024",
+    "mfaEnabled": true
+  },
+  {
+    "fullName": "Priya Chandrasekaran",
+    "email": "priya.c@nimbusretail.com",
+    "role": "analyst_tier2",
+    "phoneNumber": "+15551230103",
+    "password": "AegisAnalyst!2024",
+    "mfaEnabled": true
+  },
+  {
+    "fullName": "Leo Fontaine",
+    "email": "leo.fontaine@nimbusretail.com",
+    "role": "analyst_tier1",
+    "phoneNumber": "+15551230104",
+    "password": "AegisAnalyst!2024",
+    "mfaEnabled": false
+  },
+  {
+    "fullName": "Sofia Reyes",
+    "email": "sofia.reyes@nimbusretail.com",
+    "role": "analyst_tier1",
+    "phoneNumber": "+15551230105",
+    "password": "AegisAnalyst!2024",
+    "mfaEnabled": false
+  },
+  {
+    "fullName": "Grace Oduya",
+    "email": "grace.oduya@nimbusretail.com",
+    "role": "auditor",
+    "phoneNumber": "+15551230106",
+    "password": "AegisAuditor!2024",
+    "mfaEnabled": true
+  }
+]
